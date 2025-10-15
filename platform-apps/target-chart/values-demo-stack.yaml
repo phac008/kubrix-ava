@@ -7,7 +7,6 @@ applications:
   - name: ingress-nginx
     annotations:
       argocd.argoproj.io/sync-wave: "-11"
-
   - name: cert-manager
     annotations:
       argocd.argoproj.io/sync-wave: "-10"
@@ -15,7 +14,6 @@ applications:
   - name: external-dns
     annotations:
       argocd.argoproj.io/sync-wave: "-9" 
-
   - name: crossplane
     annotations:
       argocd.argoproj.io/sync-wave: "-9"
@@ -87,10 +85,6 @@ applications:
   - name: kyverno
     syncOptions:
       - ServerSideApply=true
-
-  - name: kubevirt-manager
-
-  - name: kubevirt
 
   - name: velero
 

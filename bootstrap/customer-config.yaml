@@ -1,4 +1,8 @@
-clusterType: k8s # supported: k8s, kind
-dnsProvider: ionos # supported: aws, ionos, stackit 
-domain: demo.kubrix.cloud
-# HA: true|false (only supported with kubriX prime)
+clusterType: k8s
+valuesFile: demo-stack
+dnsProvider: AzureDNS
+domain: demo.kubrix-ava-demo.com
+gitRepo: https://github.com/hassavokado/kubrix-ava
+gitRepoOrg: hassavokado
+gitRepoName: kubrix-ava
+gitUser: dummy
