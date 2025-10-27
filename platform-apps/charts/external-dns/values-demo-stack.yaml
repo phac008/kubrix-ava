@@ -12,15 +12,6 @@ external-dns:
   podLabels:
     azure.workload.identity/use: "true"
 
-  extraVolumes:
-    - name: azure-config-file
-      secret:
-        secretName: azure-dns-config-file
-
-  extraVolumeMounts:
-    - name: azure-config-file
-      mountPath: /etc/kubernetes
-      readOnly: true
   sources:
     - ingress
 
