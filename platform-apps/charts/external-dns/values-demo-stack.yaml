@@ -26,3 +26,5 @@ external-dns:
 
   provider:
     name: azure # or azure-private-dns
+
+  logLevel: debug
