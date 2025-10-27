@@ -8,14 +8,26 @@ external-dns:
     annotations:
       azure.workload.identity/client-id: 553b818d-9019-46fa-af5d-5a4bc0c585d6
 
+  env:
+    - name: AZURE_CLIENT_ID
+      value: "553b818d-9019-46fa-af5d-5a4bc0c585d6"
+    - name: AZURE_FEDERATED_TOKEN_FILE
+      value: /var/run/secrets/azure/tokens/azure-identity-token
+
+  extraArgs:
+    - "--azure-config-file="
+
   extraVolumes:
-    - name: azure-config-file
-      secret:
-        secretName: external-dns-azure
-  
+    - name: azure-identity-token
+      projected:
+        sources:
+          - serviceAccountToken:
+              audience: "api://AzureADTokenExchange"
+              expirationSeconds: 3600
+              path: azure-identity-token
   extraVolumeMounts:
-    - name: azure-config-file
-      mountPath: /etc/kubernetes
+    - name: azure-identity-token
+      mountPath: /var/run/secrets/azure/tokens
       readOnly: true
     
   podLabels:
