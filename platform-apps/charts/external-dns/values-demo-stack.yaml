@@ -9,6 +9,12 @@ external-dns:
       azure.workload.identity/client-id: 553b818d-9019-46fa-af5d-5a4bc0c585d6
     automountServiceAccountToken: true
 
+  env:
+    - name: AZURE_CLIENT_ID
+      value: "553b818d-9019-46fa-af5d-5a4bc0c585d6"
+    - name: AZURE_FEDERATED_TOKEN_FILE
+      value: /var/run/secrets/azure/tokens/azure-identity-token
+      
   podLabels:
     azure.workload.identity/use: "true"
 
